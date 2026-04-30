@@ -41,6 +41,73 @@
 <p id="res"></p>
 
 <script>
+  <script>
+    function check(){
+      let v = document.getElementById("pw").value;
+
+        // ✅ código correcto
+          if(v === "still_watching"){
+              document.getElementById("res").innerHTML =
+                  "> access granted<br><br><a href='./archive_03.html'>continue</a>";
+                    }
+
+                      // 🧠 EASTER EGGS
+                        else if(v === "nevis"){
+                            document.getElementById("res").innerText = "> she sees you too";
+                              }
+                                else if(v === "help"){
+                                    document.getElementById("res").innerText = "> you already tried that";
+                                      }
+                                        else if(v === "again"){
+                                            document.getElementById("res").innerText = "> it always repeats";
+                                              }
+
+                                                else {
+                                                    document.getElementById("res").innerText = "> access denied";
+                                                      }
+                                                      }
+
+                                                      // 💀 ENTER FUNCIONA
+                                                      document.getElementById("pw").addEventListener("keypress", function(e){
+                                                        if(e.key === "Enter"){
+                                                            check();
+                                                              }
+                                                              });
+
+                                                              // 🧠 GLITCH TEXTO (CAMBIA LOG)
+                                                              setInterval(()=>{
+                                                                let log = document.getElementById("log");
+                                                                  if(log){
+                                                                      log.innerText =
+                                                                          Math.random() > 0.5
+                                                                              ? "[log_09] user returned"
+                                                                                  : "[log_09] user still here";
+                                                                                    }
+                                                                                    }, 2000);
+
+                                                                                    // 🧨 GLITCH VISUAL SUAVE
+                                                                                    setInterval(()=>{
+                                                                                      document.body.style.transform =
+                                                                                        Math.random() > 0.96 ? "translateX(2px)" : "translateX(0px)";
+                                                                                        }, 100);
+
+                                                                                        // 💀 MENSAJE RARO (NO SIEMPRE SALE)
+                                                                                        setTimeout(()=>{
+                                                                                          if(Math.random() > 0.6){
+                                                                                              let extra = document.createElement("p");
+                                                                                                  extra.innerText = "> why are you still here?";
+                                                                                                      document.body.appendChild(extra);
+                                                                                                        }
+                                                                                                        }, 4000);
+
+                                                                                                        // 🔻 DEGRADACIÓN
+                                                                                                        setTimeout(()=>{
+                                                                                                          let int = document.getElementById("int");
+                                                                                                            if(int){
+                                                                                                                int.innerText = "> integrity: 33%";
+                                                                                                                  }
+                                                                                                                  }, 5000);
+                                                                                                                  </script>
 function check(){
   let v = document.getElementById("pw").value;
 

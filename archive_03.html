@@ -77,3 +77,61 @@ setInterval(()=>{
 
 </body>
 </html>
+<script>
+
+  // 🧠 RESPUESTAS SECRETAS
+  const secret = {
+    "nevis": "> you said her name.",
+      "exit": "> you can't leave yet",
+        "who_are_you": "> you already know"
+        };
+
+        document.getElementById("pw").addEventListener("keydown", function(e){
+          if(e.key === "Enter"){
+              let val = this.value;
+
+                  if(secret[val]){
+                        document.getElementById("res").innerText = secret[val];
+                              return;
+                                  }
+                                    }
+                                    });
+
+                                    // 💀 MENSAJE ALEATORIO (CLAVE VIRAL)
+                                    setTimeout(()=>{
+                                      if(Math.random() > 0.5){
+                                          let p = document.createElement("p");
+                                              p.innerText = "> this is not your first time here";
+                                                  document.body.appendChild(p);
+                                                    }
+                                                    }, 3500);
+
+                                                    // 🧨 EFECTO “DESAPARECER TEXTO”
+                                                    setInterval(()=>{
+                                                      let msg = document.getElementById("msg");
+                                                        if(msg && Math.random() > 0.97){
+                                                            msg.style.opacity = "0.3";
+                                                                setTimeout(()=> msg.style.opacity = "1", 200);
+                                                                  }
+                                                                  }, 200);
+
+                                                                  // 🔻 GLITCH DE FONDO
+                                                                  setInterval(()=>{
+                                                                    document.body.style.filter =
+                                                                      Math.random() > 0.98 ? "invert(1)" : "invert(0)";
+                                                                      }, 300);
+
+                                                                      </script>
+                                                                      <script>
+                                                                        // guarda si ya visitó
+                                                                        localStorage.setItem("visited_a03", "true");
+
+                                                                        // si vuelve otra vez
+                                                                        if(localStorage.getItem("visited_a03_twice")){
+                                                                          let p = document.createElement("p");
+                                                                            p.innerText = "> you came back.";
+                                                                              document.body.appendChild(p);
+                                                                              } else {
+                                                                                localStorage.setItem("visited_a03_twice", "true");
+                                                                                }
+                                                                                </script>

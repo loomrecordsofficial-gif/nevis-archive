@@ -74,4 +74,29 @@ function check(){
     document.getElementById("result").innerText = "> access denied";
   }
 }
-</script>
+</script><script>
+  // 🧩 RESPUESTAS OCULTAS EXTRA
+  const hiddenCodes = ["loop", "cycle", "watching_you"];
+
+  document.getElementById("pw").addEventListener("input", function(){
+    if(hiddenCodes.includes(this.value)){
+        document.getElementById("res").innerText = "> pattern deeper than expected";
+          }
+          });
+
+          // 🧨 EFECTO “LAG” INTENCIONAL
+          let lag = false;
+          setInterval(()=>{
+            lag = !lag;
+            }, 5000);
+
+            const originalCheck = check;
+            check = function(){
+              if(lag && Math.random() > 0.5){
+                  document.getElementById("res").innerText = "> ...delayed";
+                      setTimeout(originalCheck, 1200);
+                        } else {
+                            originalCheck();
+                              }
+                              };
+                              </script>
