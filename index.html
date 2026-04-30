@@ -98,4 +98,106 @@ body {
 
                                                         </body>
 <h1>NEVIS ARCHIVE</h1>
-<p>Bienvenido a mi página</p>>
+<p>Welcometo my page</p>⁶>
+
+<p style="opacity:0.15;">still watching</p>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>archive_02</title>
+
+<style>
+body {
+  background: black;
+    color: #cfcfcf;
+      font-family: monospace;
+        padding: 40px;
+          overflow: hidden;
+          }
+
+          .flash {
+            animation: flash 1s infinite;
+            }
+
+            @keyframes flash {
+              0% { opacity: 1; }
+                50% { opacity: 0.6; }
+                  100% { opacity: 1; }
+                  }
+                  </style>
+                  </head>
+
+                  <body>
+
+                  <p>> recovering file...</p>
+                  <p id="integrity">> integrity: 41%</p>
+                  <p class="flash">> external interference detected</p>
+
+                  <br>
+
+                  <p>ARCHIVE: A02</p>
+                  <p>this is not the same file</p>
+                  <p>you were not supposed to continue</p>
+
+                  <br>
+
+                  <p id="log">[log_09] user returned</p>
+                  <p>[log_10] pattern recognized</p>
+                  <p>[log_11] previous cycle detected</p>
+
+                  <br>
+
+                  <button onclick="playAudio()">> play fragment_02</button>
+
+                  <audio id="audio2">
+                    <source src="audio2.mp3" type="audio/mpeg">
+                    </audio>
+
+                    <br><br>
+
+                    <p>> input required</p>
+
+                    <input type="text" id="pw" placeholder="code">
+                    <button onclick="check()">enter</button>
+
+                    <p id="result"></p>
+
+                    <script>
+                    function playAudio(){
+                      document.getElementById("audio2").play();
+                      }
+
+                      function check(){
+                        let input = document.getElementById("pw").value;
+
+                          if(input === "still_watching"){
+                              document.getElementById("result").innerHTML =
+                                  "> access granted<br><br><a href='archive_03.html'>continue</a>";
+                                    } else {
+                                        document.getElementById("result").innerHTML =
+                                            "> access denied";
+                                              }
+                                              }
+
+                                              // 🧠 texto que cambia solo
+                                              setInterval(()=>{
+                                                document.getElementById("log").innerText =
+                                                  Math.random() > 0.5
+                                                    ? "[log_09] user returned"
+                                                      : "[log_09] user still here";
+                                                      }, 2000);
+
+                                                      // 🧨 degradación progresiva
+                                                      setTimeout(()=>{
+                                                        document.getElementById("integrity").innerText = "> integrity: 33%";
+                                                        }, 5000);
+
+                                                        // 💀 glitch leve de pantalla
+                                                        setInterval(()=>{
+                                                          document.body.style.marginLeft = (Math.random()*3)+"px";
+                                                          }, 150);
+                                                          </script>
+
+                                                          </body>
+                                                          </html>
