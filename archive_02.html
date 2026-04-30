@@ -28,43 +28,74 @@
 <p>> input required</p>
 
 <input id="pw" autocomplete="off">
-<button onclick="check()">enter</button>
+<button id="btn">enter</button>
 
 <p id="res"></p>
 
 <script>
 
-// 🔑 FUNCIÓN SIMPLE Y ESTABLE
-function check(localStorage.setItem("fail_count",
-  (parseInt(localStorage.getItem("fail_count") || 0) + 1)
-);){
-  let v = document.getElementById("pw").value.trim().toLowerCase();
+// 🔥 REFERENCIAS SEGURAS
+const input = document.getElementById("pw");
+const btn = document.getElementById("btn");
+const res = document.getElementById("res");
 
+// 🧠 CONTADOR DE FALLOS
+function addFail(){
+  let fails = parseInt(localStorage.getItem("fail_count") || 0);
+  localStorage.setItem("fail_count", fails + 1);
+}
+
+// 🚀 ACCESO A A03
+function goA03(){
+  window.location.href = "./archive_03.html";
+}
+
+// 🔑 CHECK CENTRAL (NO SE ROMPE)
+function check(){
+
+  let v = input.value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g,"");
+
+  // ✅ CORRECTO
   if(v === "still_watching"){
-    window.location.href = "./archive_03.html";
+
+    res.innerHTML = "> access granted<br>redirecting...";
+
+    setTimeout(goA03, 700);
   }
 
-  // 🧠 EASTER EGGS (NO ROMPEN NADA)
+  // 🧠 EASTER EGGS
   else if(v === "nevis"){
-    document.getElementById("res").innerText = "> she sees you too";
+    res.innerText = "> she sees you too";
   }
   else if(v === "again"){
-    document.getElementById("res").innerText = "> it repeats";
+    res.innerText = "> it repeats";
+  }
+  else if(v === "help"){
+    res.innerText = "> no one helped you before";
   }
 
+  // ❌ ERROR (REGISTRA)
   else {
-    document.getElementById("res").innerText = "> access denied";
+    addFail();
+    res.innerText = "> access denied";
   }
 }
 
-// ⌨️ ENTER FUNCIONA
-document.getElementById("pw").addEventListener("keypress", function(e){
+// 🖱️ CLICK SIEMPRE FUNCIONA
+btn.addEventListener("click", check);
+
+// ⌨️ ENTER SIEMPRE FUNCIONA
+input.addEventListener("keydown", function(e){
   if(e.key === "Enter"){
+    e.preventDefault();
     check();
   }
 });
 
-// 💀 GLITCH SUAVE (NO ROMPE)
+// 💀 GLITCH CONTROLADO (NO INTERFIERE)
 setInterval(()=>{
   let log = document.getElementById("log");
   if(log){
@@ -83,7 +114,7 @@ setTimeout(()=>{
   }
 }, 5000);
 
-// 🧠 DETALLE INQUIETANTE
+// 🧠 DETALLE RARO
 setTimeout(()=>{
   if(Math.random() > 0.6){
     let p = document.createElement("p");
