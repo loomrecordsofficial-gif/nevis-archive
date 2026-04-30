@@ -27,7 +27,16 @@
 <p>> input required</p>
 
 <input id="pw">
-<button onclick="check()">enter</button>
+<button onclick="check(if(v==="still_watching"){
+    // normal
+    }
+    else if(v==="nevis"){
+      document.getElementById("res").innerText="> she sees you too";
+      }
+      else if(v==="help"){
+        document.getElementById("res").innerText="> you already tried that";
+        }
+})">enter</button>
 
 <p id="res"></p>
 
@@ -48,7 +57,7 @@ function check(){
                       document.getElementById("log").innerText =
                         Math.random()>0.5
                           ? "[log_09] user returned"
-                            : "[log_09] user still here";
+                            : "[log_09] user still here"/cycle 02 detected;
                             },2000);
 
                             // degradación
