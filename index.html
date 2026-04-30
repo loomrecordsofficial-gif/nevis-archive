@@ -246,4 +246,25 @@ setTimeout(()=>{
                                                             document.getElementById("result").innerHTML = "> access denied";
                                                               }
                                                               }
+                                                        
                                                               </script>
+                                                              <button onclick="check()">enter</button>
+
+                                                              <p id="result"></p>
+
+                                                              <script>
+                                                              function check(){
+                                                                let input = document.getElementById("pw").value;
+
+                                                                  if(input === "replay_again_dont"){
+                                                                      document.getElementById("result").innerHTML = "> access granted...";
+
+                                                                          setTimeout(()=>{
+                                                                                window.location.href = "archive_02.html";
+                                                                                    }, 1000);
+
+                                                                                      } else {
+                                                                                          document.getElementById("result").innerHTML = "> access denied";
+                                                                                            }
+                                                                                            }
+                                                                                            </script>
