@@ -212,3 +212,21 @@ setTimeout(()=>{
   (1 segundo silencio)
 
   → redirección
+  <button onclick="go()">enter</button>
+
+  <script>
+  function go(){
+    let input = document.getElementById("pw").value;
+
+      if(input === "replay_again_dont"){
+          document.body.innerHTML = "> access granted...";
+
+              setTimeout(()=>{
+                    window.location.href = "archive_02.html";
+                        }, 1000);
+
+                          } else {
+                              document.getElementById("result").innerHTML = "> access denied";
+                                }
+                                }
+                                </script>
