@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>archive_02</title>
+<title>archive_03</title>
 </head>
 
 <body style="background:black; color:#cfcfcf; font-family:monospace; padding:40px;">
 
-<p>> recovering file...</p>
-<p id="int">> integrity: 41%</p>
-<p>> external interference detected</p>
+<p>> loading fragment...</p>
+<p>> signal unstable</p>
 
 <br>
 
-<p>ARCHIVE: A02</p>
-<p>this is not the same file</p>
-<p>you were not supposed to continue</p>
-<p style="opacity:0.3;">cycle 02 detected</p>
+<p>ARCHIVE: A03</p>
+<p style="opacity:0.3;">cycle 03 unstable</p>
 
 <br>
 
-<p id="log">[log_09] user returned</p>
-<p>[log_10] pattern recognized</p>
-<p>[log_11] previous cycle detected</p>
+<p id="msg"></p>
 
 <br>
 
@@ -34,120 +29,131 @@
 
 <script>
 
-// 🔑 FUNCIÓN PRINCIPAL
+// 🧠 TEXTO PROGRESIVO
+let lines = [
+"you stayed.",
+"most don't.",
+"",
+"you followed the pattern again.",
+"",
+"this is not about the music anymore.",
+"",
+"it's about you."
+];
+
+let i = 0;
+function type(){
+  if(i < lines.length){
+    document.getElementById("msg").innerHTML += lines[i] + "<br>";
+    i++;
+    setTimeout(type, 1200);
+  }
+}
+type();
+
+// 🔑 INPUT PRINCIPAL (SIN ROMPER FLUJO)
 function check(){
-  let v = document.getElementById("pw").value;
+  let v = document.getElementById("pw").value.trim();
 
-    // ✅ ACCESO REAL
-      if(v === "still_watching"){
-          document.getElementById("res").innerHTML =
-              "> access granted<br><br><a href='./archive_03.html'>continue</a>";
-                }
+  // PRIMER CÓDIGO (DESBLOQUEA PERO NO REDIRIGE)
+  if(v === "i_am_not_the_first"){
+    document.getElementById("res").innerText =
+    "> accepted...\n> hidden fragment detected";
+  }
 
-                  // 🧠 EASTER EGGS
-                    else if(v === "nevis"){
-                        document.getElementById("res").innerText = "> she sees you too";
-                          }
-                            else if(v === "help"){
-                                document.getElementById("res").innerText = "> you already tried that";
-                                  }
-                                    else if(v === "again"){
-                                        document.getElementById("res").innerText = "> it always repeats";
-                                          }
-                                            else if(v === "loop" || v === "cycle" || v === "watching_you"){
-                                                document.getElementById("res").innerText = "> pattern deeper than expected";
-                                                  }
+  // SEGUNDO CÓDIGO (ACCESO REAL A A04)
+  else if(v === "open_the_archive"){
+    window.location.href = "./archive_04.html";
+  }
 
-                                                    // ❌ DEFAULT
-                                                      else {
-                                                          document.getElementById("res").innerText = "> access denied";
-                                                            }
-                                                            }
+  // 🧠 EASTER EGGS
+  else if(v === "nevis"){
+    document.getElementById("res").innerText = "> you said her name.";
+  }
+  else if(v === "exit"){
+    document.getElementById("res").innerText = "> you can't leave yet";
+  }
+  else if(v === "who_are_you"){
+    document.getElementById("res").innerText = "> you already know";
+  }
 
-                                                            // ⌨️ ENTER FUNCIONA
-                                                            document.getElementById("pw").addEventListener("keypress", function(e){
-                                                              if(e.key === "Enter"){
-                                                                  check();
-                                                                    }
-                                                                    });
+  else {
+    document.getElementById("res").innerText = "> incorrect";
+  }
+}
 
-                                                                    // 💀 GLITCH TEXTO
-                                                                    setInterval(()=>{
-                                                                      let log = document.getElementById("log");
-                                                                        if(log){
-                                                                            log.innerText =
-                                                                                Math.random() > 0.5
-                                                                                    ? "[log_09] user returned"
-                                                                                        : "[log_09] user still here";
-                                                                                          }
-                                                                                          }, 2000);
+// ⌨️ ENTER FUNCIONA
+document.getElementById("pw").addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    check();
+  }
+});
 
-                                                                                          // 🧨 GLITCH VISUAL SUAVE
-                                                                                          setInterval(()=>{
-                                                                                            document.body.style.transform =
-                                                                                              Math.random() > 0.96 ? "translateX(2px)" : "translateX(0px)";
-                                                                                              }, 120);
+// 💀 GLITCH TEXTO (PARPADEO)
+setInterval(()=>{
+  let msg = document.getElementById("msg");
+  if(msg && Math.random() > 0.96){
+    msg.style.opacity = "0.2";
+    setTimeout(()=> msg.style.opacity = "1", 200);
+  }
+}, 200);
 
-                                                                                              // 🔻 DEGRADACIÓN
-                                                                                              setTimeout(()=>{
-                                                                                                let int = document.getElementById("int");
-                                                                                                  if(int){
-                                                                                                      int.innerText = "> integrity: 33%";
-                                                                                                        }
-                                                                                                        }, 5000);
+// 🧨 GLITCH VISUAL
+setInterval(()=>{
+  document.body.style.filter =
+  Math.random() > 0.97 ? "invert(1)" : "invert(0)";
+}, 150);
 
-                                                                                                        // 🧠 MENSAJE ALEATORIO (VIRAL)
-                                                                                                        setTimeout(()=>{
-                                                                                                          if(Math.random() > 0.6){
-                                                                                                              let extra = document.createElement("p");
-                                                                                                                  extra.innerText = "> why are you still here?";
-                                                                                                                      document.body.appendChild(extra);
-                                                                                                                        }
-                                                                                                                        }, 4000);
+// 🧠 MENSAJE ALEATORIO
+setTimeout(()=>{
+  if(Math.random() > 0.5){
+    let p = document.createElement("p");
+    p.innerText = "> this is not your first time here";
+    document.body.appendChild(p);
+  }
+}, 3000);
 
-                                                                                                                        // 🧨 EFECTO LAG (SIMULA SISTEMA ROTO)
-                                                                                                                        let lag = false;
-                                                                                                                        setInterval(()=>{
-                                                                                                                          lag = !lag;
-                                                                                                                          }, 5000);
+// 🔻 SISTEMA DEGRADÁNDOSE
+let integrity = 100;
 
-                                                                                                                          const originalCheck = check;
-                                                                                                                          check = function(){
-                                                                                                                            if(lag && Math.random() > 0.5){
-                                                                                                                                document.getElementById("res").innerText = "> ...delayed";
-                                                                                                                                    setTimeout(originalCheck, 1200);
-                                                                                                                                      } else {
-                                                                                                                                          originalCheck(<script>
-                                                                                                                                            function check(){
-                                                                                                                                              let v = document.getElementById("pw").value;
+let degrade = setInterval(()=>{
+  integrity -= Math.floor(Math.random()*4);
 
-                                                                                                                                                if(v === "i_am_not_the_first"){
-                                                                                                                                                    document.getElementById("res").innerText =
-                                                                                                                                                        "> accepted...\n> recovering hidden fragment";
-                                                                                                                                                          }
+  let p = document.createElement("p");
+  p.innerText = "> integrity: " + integrity + "%";
+  document.body.appendChild(p);
 
-                                                                                                                                                            else if(v === "open_the_archive"){
-                                                                                                                                                                window.location.href = "./archive_04.html";
-                                                                                                                                                                  }
+  if(integrity < 60){
+    let warn = document.createElement("p");
+    warn.innerText = "> memory unstable";
+    document.body.appendChild(warn);
+  }
 
-                                                                                                                                                                    // secretos
-                                                                                                                                                                      else if(v === "nevis"){
-                                                                                                                                                                          document.getElementById("res").innerText = "> you said her name.";
-                                                                                                                                                                            }
-                                                                                                                                                                              else if(v === "exit"){
-                                                                                                                                                                                  document.getElementById("res").innerText = "> you can't leave yet";
-                                                                                                                                                                                    }
+  if(integrity < 40){
+    let warn = document.createElement("p");
+    warn.innerText = "> fragment corruption detected";
+    document.body.appendChild(warn);
+  }
 
-                                                                                                                                                                                      else {
-                                                                                                                                                                                          document.getElementById("res").innerText = "> incorrect";
-                                                                                                                                                                                            }
-                                                                                                                                                                                            }
-                                                                                                                                                                                            </script>
-                                                                                                                                          );
-                                                                                                                                            }
-                                                                                                                                            };
+  if(integrity < 20){
+    clearInterval(degrade);
 
-                                                                                                                                            </script>
+    let crash = document.createElement("p");
+    crash.innerText = "> attempting recovery...";
+    document.body.appendChild(crash);
+  }
 
-                                                                                                                                            </body>
-                                                                                                                                            </html>
+}, 2500);
+
+// 🧩 MEMORIA DEL USUARIO
+if(localStorage.getItem("visited_a03")){
+  let p = document.createElement("p");
+  p.innerText = "> you came back.";
+  document.body.appendChild(p);
+}
+localStorage.setItem("visited_a03", "true");
+
+</script>
+
+</body>
+</html>                                                                                                                                            </html>
