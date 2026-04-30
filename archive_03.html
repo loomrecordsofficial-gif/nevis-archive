@@ -117,7 +117,33 @@ function check(){
                                                                                                                                 document.getElementById("res").innerText = "> ...delayed";
                                                                                                                                     setTimeout(originalCheck, 1200);
                                                                                                                                       } else {
-                                                                                                                                          originalCheck();
+                                                                                                                                          originalCheck(<script>
+                                                                                                                                            function check(){
+                                                                                                                                              let v = document.getElementById("pw").value;
+
+                                                                                                                                                if(v === "i_am_not_the_first"){
+                                                                                                                                                    document.getElementById("res").innerText =
+                                                                                                                                                        "> accepted...\n> recovering hidden fragment";
+                                                                                                                                                          }
+
+                                                                                                                                                            else if(v === "open_the_archive"){
+                                                                                                                                                                window.location.href = "./archive_04.html";
+                                                                                                                                                                  }
+
+                                                                                                                                                                    // secretos
+                                                                                                                                                                      else if(v === "nevis"){
+                                                                                                                                                                          document.getElementById("res").innerText = "> you said her name.";
+                                                                                                                                                                            }
+                                                                                                                                                                              else if(v === "exit"){
+                                                                                                                                                                                  document.getElementById("res").innerText = "> you can't leave yet";
+                                                                                                                                                                                    }
+
+                                                                                                                                                                                      else {
+                                                                                                                                                                                          document.getElementById("res").innerText = "> incorrect";
+                                                                                                                                                                                            }
+                                                                                                                                                                                            }
+                                                                                                                                                                                            </script>
+                                                                                                                                          );
                                                                                                                                             }
                                                                                                                                             };
 
