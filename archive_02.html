@@ -7,43 +7,90 @@
 <body style="background:black; color:#cfcfcf; font-family:monospace; padding:40px;">
 
 <p>> recovering file...</p>
-<p>> integrity: 41%</p>
+<p id="int">> integrity: 41%</p>
 <p>> external interference detected</p>
 
 <br>
 
 <p>ARCHIVE: A02</p>
 <p>this is not the same file</p>
+<p>you were not supposed to continue</p>
+<p style="opacity:0.3;">cycle 02 detected</p>
+
+<br>
+
+<p id="log">[log_09] user returned</p>
+<p>[log_10] pattern recognized</p>
+<p>[log_11] previous cycle detected</p>
 
 <br>
 
 <p>> input required</p>
 
-<input id="pw">
+<input id="pw" autocomplete="off">
 <button onclick="check()">enter</button>
 
 <p id="res"></p>
 
 <script>
+
+// 🔑 FUNCIÓN SIMPLE Y ESTABLE
 function check(){
   let v = document.getElementById("pw").value.trim().toLowerCase();
 
   if(v === "still_watching"){
     window.location.href = "./archive_03.html";
-  } else {
+  }
+
+  // 🧠 EASTER EGGS (NO ROMPEN NADA)
+  else if(v === "nevis"){
+    document.getElementById("res").innerText = "> she sees you too";
+  }
+  else if(v === "again"){
+    document.getElementById("res").innerText = "> it repeats";
+  }
+
+  else {
     document.getElementById("res").innerText = "> access denied";
   }
 }
 
-// enter funciona
+// ⌨️ ENTER FUNCIONA
 document.getElementById("pw").addEventListener("keypress", function(e){
   if(e.key === "Enter"){
     check();
   }
 });
+
+// 💀 GLITCH SUAVE (NO ROMPE)
+setInterval(()=>{
+  let log = document.getElementById("log");
+  if(log){
+    log.innerText =
+    Math.random() > 0.5
+    ? "[log_09] user returned"
+    : "[log_09] user still here";
+  }
+}, 2000);
+
+// 🔻 DEGRADACIÓN VISUAL
+setTimeout(()=>{
+  let int = document.getElementById("int");
+  if(int){
+    int.innerText = "> integrity: 33%";
+  }
+}, 5000);
+
+// 🧠 DETALLE INQUIETANTE
+setTimeout(()=>{
+  if(Math.random() > 0.6){
+    let p = document.createElement("p");
+    p.innerText = "> why are you still here?";
+    document.body.appendChild(p);
+  }
+}, 4000);
+
 </script>
 
 </body>
 </html>
-<!-- update -->
-?v=99
