@@ -1,20 +1,29 @@
 <script>
 function check(){
-  let input = document.getElementById("pw").value.trim().toLowerCase();
+  let raw = document.getElementById("pw").value;
+
+  // 👇 limpieza total del input
+  let input = raw
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, ""); // elimina espacios internos también
+
+  console.log("INPUT LIMPIO:", input); // debug
 
   if(input === "replay_again_dont"){
     document.getElementById("result").innerHTML = "> access granted...";
 
     setTimeout(()=>{
       window.location.href = "./archive_02.html";
-    }, 1000);
+    }, 800);
 
   } else {
-    document.getElementById("result").innerHTML = "> access denied";
+    document.getElementById("result").innerHTML =
+    "> access denied<br><small>(" + input + ")</small>";
   }
 }
 
-// ⌨️ ENTER FUNCIONA
+// ⌨️ ENTER
 document.getElementById("pw").addEventListener("keypress", function(e){
   if(e.key === "Enter"){
     check();
