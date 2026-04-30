@@ -1,137 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>archive_03</title>
+<title>archive_02</title>
 </head>
 
 <body style="background:black; color:#cfcfcf; font-family:monospace; padding:40px;">
 
-<p>> loading fragment...</p>
-<p>> signal unstable</p>
+<p>> recovering file...</p>
+<p id="int">> integrity: 41%</p>
+<p>> external interference detected</p>
 
 <br>
 
-<p>ARCHIVE: A03</p>
+<p>ARCHIVE: A02</p>
+<p>this is not the same file</p>
+<p>you were not supposed to continue</p>
+<p style="opacity:0.3;">cycle 02 detected</p>
 
 <br>
 
-<p id="msg">...</p>
+<p id="log">[log_09] user returned</p>
+<p>[log_10] pattern recognized</p>
+<p>[log_11] previous cycle detected</p>
 
 <br>
 
 <p>> input required</p>
 
-<input id="pw">
+<input id="pw" autocomplete="off">
 <button onclick="check()">enter</button>
 
 <p id="res"></p>
 
 <script>
-  setTimeout(()=>{
-      if(Math.random() > 0.6){
-          document.body.innerHTML += "<p>> why did you come back?/ cycle 03 unstable</p>";
-            }
-            }, 3000);
-  })
 
-// texto que aparece poco a poco
-let text = [
-"you stayed.",
-"most don't.",
-"",
-"you followed the pattern again.",
-"",
-"this is not about the music anymore.",
-"",
-"it's about you."
-];
-
-let i = 0;
-function type(){
-  if(i < text.length){
-    document.getElementById("msg").innerHTML += text[i] + "<br>";
-    i++;
-    setTimeout(type, 1200);
-  }
-}
-type();
-
-// validación
+// 🔑 FUNCIÓN PRINCIPAL
 function check(){
   let v = document.getElementById("pw").value;
 
-  if(v==="i_am_not_the_first"){
-    document.getElementById("res").innerHTML =
-    "> accepted<br><br>...you almost remember.";
-  } else {
-    document.getElementById("res").innerText="> incorrect";
-  }
-}
+    // ✅ ACCESO REAL
+      if(v === "still_watching"){
+          document.getElementById("res").innerHTML =
+              "> access granted<br><br><a href='./archive_03.html'>continue</a>";
+                }
 
-// pequeño glitch visual
-setInterval(()=>{
-  document.body.style.opacity = Math.random()>0.95 ? "0.7" : "1";
-},200);
-
-</script>
-
-</body>
-</html>
-<script>
-
-  // 🧠 RESPUESTAS SECRETAS
-  const secret = {
-    "nevis": "> you said her name.",
-      "exit": "> you can't leave yet",
-        "who_are_you": "> you already know"
-        };
-
-        document.getElementById("pw").addEventListener("keydown", function(e){
-          if(e.key === "Enter"){
-              let val = this.value;
-
-                  if(secret[val]){
-                        document.getElementById("res").innerText = secret[val];
-                              return;
+                  // 🧠 EASTER EGGS
+                    else if(v === "nevis"){
+                        document.getElementById("res").innerText = "> she sees you too";
+                          }
+                            else if(v === "help"){
+                                document.getElementById("res").innerText = "> you already tried that";
                                   }
-                                    }
-                                    });
+                                    else if(v === "again"){
+                                        document.getElementById("res").innerText = "> it always repeats";
+                                          }
+                                            else if(v === "loop" || v === "cycle" || v === "watching_you"){
+                                                document.getElementById("res").innerText = "> pattern deeper than expected";
+                                                  }
 
-                                    // 💀 MENSAJE ALEATORIO (CLAVE VIRAL)
-                                    setTimeout(()=>{
-                                      if(Math.random() > 0.5){
-                                          let p = document.createElement("p");
-                                              p.innerText = "> this is not your first time here";
-                                                  document.body.appendChild(p);
-                                                    }
-                                                    }, 3500);
+                                                    // ❌ DEFAULT
+                                                      else {
+                                                          document.getElementById("res").innerText = "> access denied";
+                                                            }
+                                                            }
 
-                                                    // 🧨 EFECTO “DESAPARECER TEXTO”
-                                                    setInterval(()=>{
-                                                      let msg = document.getElementById("msg");
-                                                        if(msg && Math.random() > 0.97){
-                                                            msg.style.opacity = "0.3";
-                                                                setTimeout(()=> msg.style.opacity = "1", 200);
-                                                                  }
-                                                                  }, 200);
+                                                            // ⌨️ ENTER FUNCIONA
+                                                            document.getElementById("pw").addEventListener("keypress", function(e){
+                                                              if(e.key === "Enter"){
+                                                                  check();
+                                                                    }
+                                                                    });
 
-                                                                  // 🔻 GLITCH DE FONDO
-                                                                  setInterval(()=>{
-                                                                    document.body.style.filter =
-                                                                      Math.random() > 0.98 ? "invert(1)" : "invert(0)";
-                                                                      }, 300);
+                                                                    // 💀 GLITCH TEXTO
+                                                                    setInterval(()=>{
+                                                                      let log = document.getElementById("log");
+                                                                        if(log){
+                                                                            log.innerText =
+                                                                                Math.random() > 0.5
+                                                                                    ? "[log_09] user returned"
+                                                                                        : "[log_09] user still here";
+                                                                                          }
+                                                                                          }, 2000);
 
-                                                                      </script>
-                                                                      <script>
-                                                                        // guarda si ya visitó
-                                                                        localStorage.setItem("visited_a03", "true");
+                                                                                          // 🧨 GLITCH VISUAL SUAVE
+                                                                                          setInterval(()=>{
+                                                                                            document.body.style.transform =
+                                                                                              Math.random() > 0.96 ? "translateX(2px)" : "translateX(0px)";
+                                                                                              }, 120);
 
-                                                                        // si vuelve otra vez
-                                                                        if(localStorage.getItem("visited_a03_twice")){
-                                                                          let p = document.createElement("p");
-                                                                            p.innerText = "> you came back.";
-                                                                              document.body.appendChild(p);
-                                                                              } else {
-                                                                                localStorage.setItem("visited_a03_twice", "true");
-                                                                                }
-                                                                                </script>
+                                                                                              // 🔻 DEGRADACIÓN
+                                                                                              setTimeout(()=>{
+                                                                                                let int = document.getElementById("int");
+                                                                                                  if(int){
+                                                                                                      int.innerText = "> integrity: 33%";
+                                                                                                        }
+                                                                                                        }, 5000);
+
+                                                                                                        // 🧠 MENSAJE ALEATORIO (VIRAL)
+                                                                                                        setTimeout(()=>{
+                                                                                                          if(Math.random() > 0.6){
+                                                                                                              let extra = document.createElement("p");
+                                                                                                                  extra.innerText = "> why are you still here?";
+                                                                                                                      document.body.appendChild(extra);
+                                                                                                                        }
+                                                                                                                        }, 4000);
+
+                                                                                                                        // 🧨 EFECTO LAG (SIMULA SISTEMA ROTO)
+                                                                                                                        let lag = false;
+                                                                                                                        setInterval(()=>{
+                                                                                                                          lag = !lag;
+                                                                                                                          }, 5000);
+
+                                                                                                                          const originalCheck = check;
+                                                                                                                          check = function(){
+                                                                                                                            if(lag && Math.random() > 0.5){
+                                                                                                                                document.getElementById("res").innerText = "> ...delayed";
+                                                                                                                                    setTimeout(originalCheck, 1200);
+                                                                                                                                      } else {
+                                                                                                                                          originalCheck();
+                                                                                                                                            }
+                                                                                                                                            };
+
+                                                                                                                                            </script>
+
+                                                                                                                                            </body>
+                                                                                                                                            </html>
