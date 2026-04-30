@@ -7,109 +7,40 @@
 <body style="background:black; color:#cfcfcf; font-family:monospace; padding:40px;">
 
 <p>> recovering file...</p>
-<p id="int">> integrity: 41%</p>
+<p>> integrity: 41%</p>
 <p>> external interference detected</p>
 
 <br>
 
 <p>ARCHIVE: A02</p>
 <p>this is not the same file</p>
-<p>you were not supposed to continue</p>
-<p style="opacity:0.3;">cycle 02 detected</p>
-
-<br>
-
-<p id="log">[log_09] user returned</p>
-<p>[log_10] pattern recognized</p>
-<p>[log_11] previous cycle detected</p>
 
 <br>
 
 <p>> input required</p>
 
-<input id="pw" autocomplete="off">
+<input id="pw">
 <button onclick="check()">enter</button>
 
 <p id="res"></p>
 
 <script>
-
-// 🔑 FUNCIÓN PRINCIPAL
 function check(){
-  let v = document.getElementById("pw").value.trim();
+  let v = document.getElementById("pw").value.trim().toLowerCase();
 
-  // ✅ ACCESO A A03 (ESTABLE)
   if(v === "still_watching"){
-    document.getElementById("res").innerHTML =
-    "> access granted<br><br><button onclick='goA03()'>continue</button>";
-  }
-
-  // 🧠 EASTER EGGS
-  else if(v === "nevis"){
-    document.getElementById("res").innerText = "> she sees you too";
-  }
-  else if(v === "help"){
-    document.getElementById("res").innerText = "> you already tried that";
-  }
-  else if(v === "again"){
-    document.getElementById("res").innerText = "> it always repeats";
-  }
-  else if(v === "loop" || v === "cycle" || v === "watching_you"){
-    document.getElementById("res").innerText = "> pattern deeper than expected";
-  }
-
-  // ❌ DEFAULT
-  else {
+    window.location.href = "./archive_03.html";
+  } else {
     document.getElementById("res").innerText = "> access denied";
   }
 }
 
-// 🚀 REDIRECCIÓN SEGURA
-function goA03(){
-  window.location.href = "./archive_03.html";
-}
-
-// ⌨️ ENTER FUNCIONA
+// enter funciona
 document.getElementById("pw").addEventListener("keypress", function(e){
   if(e.key === "Enter"){
     check();
   }
 });
-
-// 💀 GLITCH TEXTO (LOG)
-setInterval(()=>{
-  let log = document.getElementById("log");
-  if(log){
-    log.innerText =
-    Math.random() > 0.5
-    ? "[log_09] user returned"
-    : "[log_09] user still here";
-  }
-}, 2000);
-
-// 🧨 GLITCH VISUAL SUAVE
-setInterval(()=>{
-  document.body.style.transform =
-  Math.random() > 0.96 ? "translateX(2px)" : "translateX(0px)";
-}, 120);
-
-// 🔻 DEGRADACIÓN
-setTimeout(()=>{
-  let int = document.getElementById("int");
-  if(int){
-    int.innerText = "> integrity: 33%";
-  }
-}, 5000);
-
-// 🧠 MENSAJE ALEATORIO (NO SIEMPRE SALE)
-setTimeout(()=>{
-  if(Math.random() > 0.6){
-    let extra = document.createElement("p");
-    extra.innerText = "> why are you still here?";
-    document.body.appendChild(extra);
-  }
-}, 4000);
-
 </script>
 
 </body>
