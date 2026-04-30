@@ -35,7 +35,9 @@
 <script>
 
 // 🔑 FUNCIÓN SIMPLE Y ESTABLE
-function check(){
+function check(localStorage.setItem("fail_count",
+  (parseInt(localStorage.getItem("fail_count") || 0) + 1)
+);){
   let v = document.getElementById("pw").value.trim().toLowerCase();
 
   if(v === "still_watching"){
