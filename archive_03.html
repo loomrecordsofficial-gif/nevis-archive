@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>archive_03</title>
+</head>
+
+<body style="background:black; color:#cfcfcf; font-family:monospace; padding:40px;">
+
+<p>> loading fragment...</p>
+<p>> signal unstable</p>
+
+<br>
+
+<p>ARCHIVE: A03</p>
+
+<br>
+
+<p id="msg">...</p>
+
+<br>
+
+<p>> input required</p>
+
+<input id="pw">
+<button onclick="check()">enter</button>
+
+<p id="res"></p>
+
+<script>
+
+// texto que aparece poco a poco
+let text = [
+"you stayed.",
+"most don't.",
+"",
+"you followed the pattern again.",
+"",
+"this is not about the music anymore.",
+"",
+"it's about you."
+];
+
+let i = 0;
+function type(){
+  if(i < text.length){
+    document.getElementById("msg").innerHTML += text[i] + "<br>";
+    i++;
+    setTimeout(type, 1200);
+  }
+}
+type();
+
+// validación
+function check(){
+  let v = document.getElementById("pw").value;
+
+  if(v==="i_am_not_the_first"){
+    document.getElementById("res").innerHTML =
+    "> accepted<br><br>...you almost remember.";
+  } else {
+    document.getElementById("res").innerText="> incorrect";
+  }
+}
+
+// pequeño glitch visual
+setInterval(()=>{
+  document.body.style.opacity = Math.random()>0.95 ? "0.7" : "1";
+},200);
+
+</script>
+
+</body>
+</html>
