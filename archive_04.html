@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>archive_04</title>
+</head>
+
+<body style="background:black; color:#e0e0e0; font-family:monospace; padding:40px;">
+
+<p>> loading...</p>
+<p>> unauthorized memory access</p>
+
+<br>
+
+<p>ARCHIVE: A04</p>
+
+<br>
+
+<div id="content"></div>
+
+<br>
+
+<p>> input required</p>
+<input id="pw" autocomplete="off">
+<button id="btn">enter</button>
+
+<p id="res"></p>
+
+<script>
+
+// 🧠 DATOS DEL USUARIO
+let failCount = parseInt(localStorage.getItem("fail_count") || 0);
+let usedNevis = localStorage.getItem("used_nevis");
+let visitedBefore = localStorage.getItem("visited_a04");
+
+// 🎭 DECISIÓN DE VERSIÓN
+let version;
+
+if(usedNevis){
+  version = "entity"; // 👁️
+}
+else if(failCount >= 3){
+  version = "error"; // 💀
+}
+else{
+  version = "memory"; // 🧠
+}
+
+localStorage.setItem("a04_version", version);
+
+// 📦 CONTENEDOR
+const c = document.getElementById("content");
+
+// ==========================
+// 🧠 MEMORY VERSION
+// ==========================
+if(version === "memory"){
+
+  let lines = [
+  "...you weren't supposed to find this.",
+  "",
+  "this file was deleted.",
+  "",
+  "or at least...",
+  "",
+  "it should have been.",
+  "",
+  "do you remember?",
+  "",
+  "> don't press replay."
+  ];
+
+  let i = 0;
+  function type(){
+    if(i < lines.length){
+      c.innerHTML += lines[i] + "<br>";
+      i++;
+      setTimeout(type, 1400);
+    }
+  }
+  type();
+}
+
+// ==========================
+// 💀 ERROR VERSION
+// ==========================
+if(version === "error"){
+
+  let msgs = [
+  "> error 409",
+  "> duplicate user detected",
+  "> memory overlap",
+  "> attempting rollback",
+  "> failed",
+  "> failed",
+  "> system locked"
+  ];
+
+  let i = 0;
+  function spam(){
+    if(i < msgs.length){
+      let p = document.createElement("p");
+      p.innerText = msgs[i];
+      c.appendChild(p);
+      i++;
+      setTimeout(spam, 500);
+    }
+  }
+  spam();
+}
+
+// ==========================
+// 👁️ ENTITY VERSION (NEVIS)
+// ==========================
+if(version === "entity"){
+
+  let lines = [
+  "you said my name.",
+  "",
+  "so now you see me.",
+  "",
+  "you keep repeating the same path.",
+  "",
+  "you always do.",
+  "",
+  "why did you come back?"
+  ];
+
+  let i = 0;
+  function type(){
+    if(i < lines.length){
+      c.innerHTML += lines[i] + "<br>";
+      i++;
+      setTimeout(type, 1200);
+    }
+  }
+  type();
+}
+
+// ==========================
+// 🔐 INPUT SECRETO
+// ==========================
+const input = document.getElementById("pw");
+const btn = document.getElementById("btn");
+const res = document.getElementById("res");
+
+function check(){
+
+  let v = input.value.trim().toLowerCase().replace(/\s+/g,"");
+
+  // 🔓 DESBLOQUEO OCULTO
+  if(v === "break_the_loop"){
+    res.innerHTML = "> loop broken<br>> unlocking fragment...";
+
+    setTimeout(()=>{
+      document.body.innerHTML += `
+      <br><br>
+      > fragment_unlocked.mp3
+      <br>
+      > (this was hidden)
+      `;
+    },1000);
+  }
+
+  // 👁️ RESPUESTA SI YA USÓ NEVIS
+  else if(v === "nevis"){
+    res.innerText = "> you already called me";
+  }
+
+  // 💀 ERROR FEEDBACK
+  else{
+    res.innerText = "> no response";
+  }
+}
+
+// EVENTOS
+btn.addEventListener("click", check);
+
+input.addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    e.preventDefault();
+    check();
+  }
+});
+
+// ==========================
+// 🧨 GLITCH GLOBAL
+// ==========================
+setInterval(()=>{
+  document.body.style.transform =
+  Math.random() > 0.97 ? "translateX(2px)" : "translateX(0)";
+}, 100);
+
+// FLASH
+setInterval(()=>{
+  if(Math.random() > 0.98){
+    document.body.style.background = "white";
+    document.body.style.color = "black";
+
+    setTimeout(()=>{
+      document.body.style.background = "black";
+      document.body.style.color = "#e0e0e0";
+    }, 80);
+  }
+}, 200);
+
+// ==========================
+// 🧩 MEMORIA
+// ==========================
+if(visitedBefore){
+  let p = document.createElement("p");
+  p.innerText = "> you came back again.";
+  document.body.appendChild(p);
+}
+
+localStorage.setItem("visited_a04", "true");
+
+</script>
+
+</body>
+</html>
