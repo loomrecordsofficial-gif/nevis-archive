@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html>
-<body style="background:black; color:white; font-family:monospace; padding:40px;">
+<head>
+<title>archive_02</title>
+</head>
 
-<h1>ARCHIVE 02 WORKING</h1>
+<body style="background:black; color:#cfcfcf; font-family:monospace; padding:40px;">
 
-<p>If you see this, A02 exists.</p>
+<p>> recovering file...</p>
+<p id="int">> integrity: 41%</p>
+<p>> external interference detected</p>
 
-</body>
-</html>
+<br>
+
+<p>ARCHIVE: A02</p>
+<p>this is not the same file</p>
+<p>you were not supposed to continue</p>
+
+<br>
+
+<p id="log">[log_09] user returned</p>
+<p>[log_10] pattern recognized</p>
+<p>[log_11] previous cycle detected</p>
+
+<br>
+
+<p>> input required</p>
+
+<input id="pw">
+<button onclick="check()">enter</button>
+
+<p id="res"></p>
+
+<script>
+function check(){
+  let v = document.getElementById("pw").value;
+
+    if(v==="still_watching"){
+        document.getElementById("res").innerHTML =
+            "> access granted<br><br><a href='archive_03.html'>continue</a>";
+              } else {
+                  document.getElementById("res").innerText="> access denied";
+                    }
+                    }
+
+                    // glitch leve
+                    setInterval(()=>{
+                      document.getElementById("log").innerText =
+                        Math.random()>0.5
+                          ? "[log_09] user returned"
+                            : "[log_09] user still here";
+                            },2000);
+
+                            // degradación
+                            setTimeout(()=>{
+                              document.getElementById("int").innerText="> integrity: 33%";
+                              },4000);
+                              </script>
+
+                              </body>
+                              </html>
